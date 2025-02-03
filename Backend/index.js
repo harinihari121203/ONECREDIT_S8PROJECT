@@ -14,3 +14,31 @@
 // });
 
 
+const express= require('express');
+const dotenv = require("dotenv");
+const connectDB= require('./src/config/db');
+const itemModel = require('/src/models/Item');
+
+const cors =require('cors');
+
+dotenv.config();
+const app= express();
+app.use(express.json());
+app.use(cors())
+
+connectDB();
+
+app.get('/', async (req, res) => {
+    try {
+        const response = await itemModel.find();
+        return res.json({ items: response });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+});
+
+app.listen(8080, () =>
+{
+    console.log("app is running");
+}) 
