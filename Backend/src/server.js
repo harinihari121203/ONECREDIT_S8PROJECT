@@ -40,7 +40,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors()); // Fix CORS issues
-
+app.use("/docs",swaggerUI.serve,swaggerUI.setup(swaggerJSDocs))
 app.use(express.urlencoded({ extended: true }));
 
 connectDB();
