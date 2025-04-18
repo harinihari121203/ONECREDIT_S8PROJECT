@@ -475,9 +475,9 @@ app.post("/api/add-course", async (req, res) => {
   console.log("Received data:", req.body); // Log request data for debugging
 
   try {
-    const { name, code, field, description, credits, startDate, endDate } = req.body;
+    const { name, code, field, description, startDate, endDate } = req.body;
 
-    if (!name || !code || !field || !description || !credits || !startDate || !endDate) {
+    if (!name || !code || !field || !description || !startDate || !endDate) {
       return res.status(400).json({ error: "All fields are required" });
     }
 
@@ -486,7 +486,6 @@ app.post("/api/add-course", async (req, res) => {
       code,
       field,
       description,
-      credits,
       startDate,
       endDate,
     });
