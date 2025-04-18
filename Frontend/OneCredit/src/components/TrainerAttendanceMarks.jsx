@@ -13,7 +13,7 @@ const TrainerAttendanceMarks = ({ trainerEmail }) => {
   // Fetch courses handled by the trainer
   useEffect(() => {
     if (trainerEmail) {
-      fetch(`https://onecredit-backend.onrender.com/api/trainer-courses?email=${trainerEmail}`)
+      fetch(`http://localhost:8080/api/trainer-courses?email=${trainerEmail}`)
         .then((response) => response.json())
         .then((data) => setCourses(data))
         .catch((error) => console.error("Error fetching trainer courses:", error));
@@ -23,7 +23,7 @@ const TrainerAttendanceMarks = ({ trainerEmail }) => {
   // Fetch students when a course is selected
   useEffect(() => {
     if (selectedCourseId) {
-      fetch(`https://onecredit-backend.onrender.com/api/course-students?courseId=${selectedCourseId}`)
+      fetch(`http://localhost:8080/api/course-students?courseId=${selectedCourseId}`)
         .then((response) => response.json())
         .then((data) => {
           setStudents(data);
@@ -85,7 +85,7 @@ const handleSubmitAttendanceAndMarks = async () => {
       remarks: remarks[student._id] || "",
     }));
 
-    const response = await fetch("https://onecredit-backend.onrender.com/api/submit-attendance", {
+    const response = await fetch("http://localhost:8080/api/submit-attendance", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updates),
