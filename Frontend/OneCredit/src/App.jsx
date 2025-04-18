@@ -1,86 +1,136 @@
-// import { useState, useEffect } from "react";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
-// import "./App.css";
-// import axios from "axios";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { auth, googleProvider } from "./firebase";
+import { signInWithPopup } from "firebase/auth";
+import AdminDashboard from "./components/AdminDashboard";
+import TrainerDashboard from "./components/TrainerDashboard";
+import StudentDashboard from "./components/StudentDashboard";
+import RegisteredCourses from "./components/RegisteredCourses";
+import CompletedCourses from "./components/CompletedCourses";
+import CourseRegistration from "./components/CourseRegistration"; 
+import ElectiveExemption from "./components/ElectiveExemption";
+import TrainerCourses from "./components/TrainerCourses";
+import TrainerAttendanceMarks from "./components/TrainerAttendanceMarks";
+import logo from "./assets/bitsathy_logo.png";
+import ExemptionDashboard from "./components/ExemptionDashbaord";
+import StudentExemptionRequest from "./components/StudentExemptionRequest";
 
-// function App() {
-//   const [count, setCount] = useState(0);
-//   const [array, setArray] = useState([]);
 
-//   const fetchAPI = async () => {
-//     const response = await axios.get("http://localhost:8080/api");
-//     setArray(response.data.fruits);
-//     console.log(response.data.fruits);
-//   };
+const Home = () => {
+  const navigate = useNavigate();
 
-//   useEffect(() => {
-//     fetchAPI();
-//   }, []);
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const token = await result.user.getIdToken();
+      console.log("Token received",token);
 
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vitejs.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//         {array.map((fruit, index) => (
-//           <div key={index}>
-//             <p>{fruit}</p>
-//             <br></br>
-//           </div>
-//         ))}
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   );
-// }
+      // Store the token in localStorage
+    localStorage.setItem("token", token);
+    
+      // const userEmail = result.user.email;
+      // if (userEmail === "harinihari121203@gmail.com") {
+      
+      //   navigate("/hod-dashboard"); // Redirecting to ExemptionDashboard
+      //   return;
+      // }  
+      const response = await fetch("http://localhost:8080/api/protected", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      });
 
-// export default App;
+      const userData = await response.json();
+      console.log("User Data from Backend:", userData); // Debugging
 
-import {useEffect, useState} from 'react'
-import './App.css';
-
-function App() {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => { 
-      try {
-        const res = await fetch('http://localhost:8080');
-        const data = await res.json();
-        setItems(data.items);
-        console.log(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
+      
+      if (!userData.role) {
+        console.error("User role not found!");
+        return;
       }
-    };
-    fetchData();
-  }, []);
+
+      localStorage.setItem("userRole", userData.role);
+      console.log(userData.role)
+
+      switch (userData.role) {
+        case "admin":
+          navigate("/admin-dashboard");
+          break;
+        case "trainer":
+          navigate("/trainer-dashboard");
+          break;
+        case "student":
+          navigate("/student-dashboard");
+          break;
+        case "HOD":
+          console.log("Navigating to hod-dashboard");  // Debug log
+          navigate("/hod-dashboard");
+          break;
+        case "Autonomy Affairs":
+          console.log("Navigating to Autonomy Affairs-dashboard");  // Debug log
+          navigate("/autonomy-affairs-dashboard");
+          break;
+        case "Head Academics":
+          console.log("Navigating to Head Academics-dashboard");
+          navigate("/head-academics-dashboard");
+          break;
+        case "COE":
+          console.log("Navigating to COE-dashboard");
+          navigate("/coe-dashboard");
+          break;
+        default:
+          console.error("Unknown role:", userData.role);
+          break;
+      }
+    } catch (error) {
+      console.error("Error during sign-in:", error);
+    }
+  };
 
   return (
-    <div>
-      <h1>Items</h1>
-      <ul>
-        {items.map((item, index) => (
-          <li key={index}>{item.name}</li>
-        ))}
-      </ul>
+    <div className="w-screen h-screen flex justify-center items-center bg-gray-100">
+      <div className="bg-white p-10 rounded-2xl shadow-lg flex flex-col items-center max-w-md">
+        {/* <h1 className="text-lg font-bold mb-6">OneCredit Course</h1> */}
+        <h2 className="text-2xl font-semibold mb-5">OneCredit Course</h2>
+        <h3 className="text-2xl font-semibold mb-5">Welcome Back!</h3>
+        
+        <img src={logo} alt="BIT Logo" className="w-70 mb-9" />
+
+        <button
+          onClick={handleGoogleSignIn}
+          className="px-10 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+        >
+         Google Sign In
+        </button>
+      </div>
     </div>
   );
-}
-export default App 
+};
+
+const App = () => (
+  <Router>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/admin-dashboard/*" element={<AdminDashboard />} />
+      <Route path="/trainer-dashboard/*" element={<TrainerDashboard />} />
+      <Route path="trainer-courses" element={<TrainerCourses />} />
+       <Route path="attendance-marks" element={<TrainerAttendanceMarks />} />
+      {/* Student Dashboard with Nested Routes */}
+      <Route path="/student-dashboard/*" element={<StudentDashboard />}>
+        <Route path="registered-courses" element={<RegisteredCourses />} />
+        <Route path="completed-courses" element={<CompletedCourses />} />
+        <Route path="register-course" element={<CourseRegistration />} />
+        <Route path="elective-exemption" element={<ElectiveExemption />} />
+        <Route path="exemption-request" element={<StudentExemptionRequest/>} />
+      </Route>
+      <Route path="/hod-dashboard" element={<ExemptionDashboard role="HOD" />} />
+        <Route path="/autonomy-affairs-dashboard" element={<ExemptionDashboard role="Autonomy Affairs" />} />
+        <Route path="/head-academics-dashboard" element={<ExemptionDashboard role="Head Academics" />} />
+        <Route path="/coe-dashboard" element={<ExemptionDashboard role="COE" />} />
+
+    </Routes>
+  </Router>
+);
+
+export default App;

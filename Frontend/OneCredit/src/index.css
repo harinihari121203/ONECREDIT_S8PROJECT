@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +65,34 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  padding: 0;
+  //max-width: 100vw;
+  width:100%;
+  min-height: 100%;
+  
+  
+  overflow-x: hidden;
+  //outline: 1px solid red !important;
 }
+
+.table-container {
+  display: block;
+  overflow-x: auto; /* Allows only the table to scroll horizontally */
+  max-width: 100vw; /* Prevents the container from exceeding the viewport width */
+}
+
+table {
+  min-width: max-content; /* Ensures the table takes as much width as needed */
+  border-collapse: collapse;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "tailwindcss";
