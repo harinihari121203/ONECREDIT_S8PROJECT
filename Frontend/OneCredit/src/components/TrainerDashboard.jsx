@@ -27,7 +27,7 @@ const TrainerDashboard = () => {
 
   useEffect(() => {
     if (trainerEmail) {
-      fetch(`http://localhost:8080/api/trainer-courses?email=${trainerEmail}`)
+      fetch(`https://onecredit-backend.onrender.com/api/trainer-courses?email=${trainerEmail}`)
         .then((response) => response.json())
         .then((data) => {
           // Ensure data is an array, or set to an empty array as fallback
