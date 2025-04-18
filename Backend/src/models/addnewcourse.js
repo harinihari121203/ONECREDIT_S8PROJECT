@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const MaterialSchema = new mongoose.Schema({
   id: { type: String, required: true }, // unique identifier for material
   title: { type: String, required: true },
-  //description: { type: String, default: "" },
+  description: { type: String, default: "" },
   fileUrl: { type: String, required: true },
   uploadedAt: { type: Date, default: Date.now }
 });
