@@ -29,7 +29,6 @@ const AddCourse = ({ onAddCourse }) => {
       !formData.code ||
       !formData.field ||
       !formData.description ||
-      !formData.credits ||
       !formData.startDate ||
       !formData.endDate
     ) {
@@ -52,7 +51,6 @@ const AddCourse = ({ onAddCourse }) => {
       field: "",
       description: "",
       // eligible_departments: "",
-      credits: "",
       startDate: "",
       endDate: "",
     });
@@ -110,15 +108,7 @@ const AddCourse = ({ onAddCourse }) => {
           required
           className="block w-full p-2 border rounded"
         /> */}
-        <input
-          name="credits"
-          placeholder="No. of Credits"
-          type="number"
-          value={formData.credits}
-          onChange={handleChange}
-          required
-          className="block w-full p-2 border rounded"
-        />
+        
         <input
           name="startDate"
           placeholder="Start Date"

@@ -22,7 +22,7 @@ const AddHOD = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/hods", {
+      const response = await fetch("https://onecredit-backend.onrender.com/api/hods", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(hodData),

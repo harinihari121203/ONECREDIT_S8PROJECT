@@ -16,7 +16,7 @@ const CourseRegistration = () => {
   useEffect(() => {
     if (studentDetails.department) {
       console.log("Fetching courses for department:", studentDetails.department);
-      fetch(`http://localhost:8080/api/courses`)
+      fetch(`https://onecredit-backend.onrender.com/api/courses`)
         .then((response) => response.json())
         .then((data) =>  {
           console.log("Courses fetched:", data);  // Debug here
@@ -40,7 +40,7 @@ const CourseRegistration = () => {
     };
     console.log("Sending registration data:", registrationDetails); 
     try {
-      const response = await fetch("http://localhost:8080/api/register-course", {
+      const response = await fetch("https://onecredit-backend.onrender.com/api/register-course", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

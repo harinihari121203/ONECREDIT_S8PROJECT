@@ -18,7 +18,7 @@ const ExemptiveTypeLimit = () => {
     e.preventDefault();
 
     try {
-      await axios.put("http://localhost:8080/api/exemptive-limits", {
+      await axios.put("https://onecredit-backend.onrender.com/api/exemptive-limits", {
         exemptiveType: formData.exemptiveType,
         limit: Number(formData.limit)
       });

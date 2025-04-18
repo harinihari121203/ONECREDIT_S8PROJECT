@@ -38,7 +38,7 @@ const StudentExemptionRequest = ({ studentId }) => {
       try {
         if (studentId) {
           const response = await axios.get(
-            `http://localhost:8080/api/exemptions/student/${studentId}`
+            `https://onecredit-backend.onrender.com/api/exemptions/student/${studentId}`
           );
           const updatedExemptions = response.data.map((request) => ({
             ...request,

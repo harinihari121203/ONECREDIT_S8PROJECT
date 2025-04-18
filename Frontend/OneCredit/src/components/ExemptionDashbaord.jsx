@@ -16,7 +16,7 @@ const ExemptionDashboard = () => {
         if (storedRole) {
           setUserRole(storedRole);
         } else {
-          const response = await axios.post("http://localhost:8080/api/protected", {}, {
+          const response = await axios.post("https://onecredit-backend.onrender.com/api/protected", {}, {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
           });
 
@@ -39,7 +39,7 @@ const ExemptionDashboard = () => {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const response = await axios.get("http://localhost:8080/api/exemptionsbyRole", {
+      const response = await axios.get("https://onecredit-backend.onrender.com/api/exemptionsbyRole", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -75,7 +75,7 @@ const ExemptionDashboard = () => {
       }
 
       await axios.put(
-        `http://localhost:8080/api/exemptions/${requestId}/${action}`,
+        `https://onecredit-backend.onrender.com/api/exemptions/${requestId}/${action}`,
         payload,
         { headers: { Authorization: `Bearer ${token}` } }
       );

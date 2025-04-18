@@ -19,7 +19,7 @@ const CourseMaterials = ({ studentEmail }) => {
  
   useEffect(() => {
     if (studentEmail) {
-      fetch(`http://localhost:8080/api/student-courses?email=${studentEmail}`)
+      fetch(`https://onecredit-backend.onrender.com/api/student-courses?email=${studentEmail}`)
         .then((response) => response.json())
         .then((data) => setStudentCourses(data))
         .catch((error) =>
@@ -117,7 +117,7 @@ const StudentDashboard = () => {
   useEffect(() => {
     if (studentEmail) {
       // Fetch registered courses count
-      fetch(`http://localhost:8080/api/registered-courses?email=${studentEmail}`)
+      fetch(`https://onecredit-backend.onrender.com/api/registered-courses?email=${studentEmail}`)
         .then((response) => response.json())
         .then((data) => setRegisteredCoursesCount(data.length))
         .catch((error) =>
@@ -135,7 +135,7 @@ const StudentDashboard = () => {
     try {
       const studentId = user?._id;
       const response = await axios.get(
-        `http://localhost:8080/attendance_marks?studentId=${studentId}&completed_status=Yes`
+        `https://onecredit-backend.onrender.com/attendance_marks?studentId=${studentId}&completed_status=Yes`
       );
       //setCompletedCourses(response.data);
       //console.log("Fetched Completed Courses:", response.data);
@@ -154,7 +154,7 @@ const StudentDashboard = () => {
 //   if (studentEmail) {
 
 //     const studentId = user?._id;
-//     fetch(`http://localhost:8080/api/exemptions/student/${studentId}`)
+//     fetch(`https://onecredit-backend.onrender.com/api/exemptions/student/${studentId}`)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         console.log(data,"data")

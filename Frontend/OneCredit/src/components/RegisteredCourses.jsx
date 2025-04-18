@@ -10,7 +10,7 @@ const RegisteredCourses = ({ studentEmail }) => {
 
   useEffect(() => {
     if (studentEmail) {
-      fetch(`http://localhost:8080/api/registered-courses?email=${encodeURIComponent(studentEmail)}`)
+      fetch(`https://onecredit-backend.onrender.com/api/registered-courses?email=${encodeURIComponent(studentEmail)}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);

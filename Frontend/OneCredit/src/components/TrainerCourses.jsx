@@ -12,7 +12,7 @@ const TrainerCourses = ({ trainerEmail }) => {
   // Fetch trainer courses
   useEffect(() => {
     if (trainerEmail) {
-      fetch(`http://localhost:8080/api/trainer-courses?email=${trainerEmail}`)
+      fetch(`https://onecredit-backend.onrender.com/api/trainer-courses?email=${trainerEmail}`)
         .then((response) => response.json())
         .then((data) => setCourses(data))
         .catch((error) => console.error("Error fetching trainer courses:", error));
@@ -48,7 +48,7 @@ const TrainerCourses = ({ trainerEmail }) => {
       formData.append("title", materialTitle);
       //formData.append("description", materialDescription);
 
-      const response = await fetch("http://localhost:8080/api/upload-material", {
+      const response = await fetch("https://onecredit-backend.onrender.com/api/upload-material", {
         method: "POST",
         body: formData,
       });

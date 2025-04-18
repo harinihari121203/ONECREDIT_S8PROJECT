@@ -8,7 +8,7 @@ const AdditionalHOD=()=>{
     
       // Fetch HODs from the API
       useEffect(() => {
-        fetch("http://localhost:8080/api/hods")
+        fetch("https://onecredit-backend.onrender.com/api/hods")
           .then((res) => res.json())
           .then((data) => {
             console.log("HODs API Response:", data);
@@ -21,7 +21,7 @@ const AdditionalHOD=()=>{
       const toggleStatus = async (id, currentStatus) => {
         const updatedStatus = !currentStatus;
         try {
-          await fetch(`http://localhost:8080/api/hods/${id}/status`, {
+          await fetch(`https://onecredit-backend.onrender.com/api/hods/${id}/status`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ isActive: updatedStatus }),

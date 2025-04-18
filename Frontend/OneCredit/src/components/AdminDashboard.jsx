@@ -45,7 +45,7 @@ const AdminDashboard = () => {
       return;
     }
 
-    fetch(`http://localhost:8080/api/courses?department=${encodeURIComponent(userDepartment)}`)
+    fetch(`https://onecredit-backend.onrender.com/api/courses?department=${encodeURIComponent(userDepartment)}`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Courses API Response:", data);
@@ -56,7 +56,7 @@ const AdminDashboard = () => {
 
 
   useEffect(() => {
-  fetch("http://localhost:8080/api/courses")
+  fetch("https://onecredit-backend.onrender.com/api/courses")
     .then((res) => res.json())
     .then((data) => {
       console.log("Courses API Response:", data);
@@ -64,7 +64,7 @@ const AdminDashboard = () => {
     })
     .catch((err) => console.error("Error fetching courses:", err));
 
-  fetch("http://localhost:8080/api/trainers")
+  fetch("https://onecredit-backend.onrender.com/api/trainers")
     .then((res) => res.json())
     .then((data) => {
       console.log("Trainers API Response:", data);
@@ -73,7 +73,7 @@ const AdminDashboard = () => {
     .catch((err) => console.error("Error fetching trainers:", err));
   },[]);
 
-  // fetch("http://localhost:8080/api/students")
+  // fetch("https://onecredit-backend.onrender.com/api/students")
   //   .then((res) => res.json())
   //   .then((data) => {
   //     console.log("Students API Response:", data);
@@ -81,12 +81,12 @@ const AdminDashboard = () => {
   //   })
   //   .catch((err) => console.error("Error fetching students:", err));
 
-  //   fetch("http://localhost:8080/api/available-courses")
+  //   fetch("https://onecredit-backend.onrender.com/api/available-courses")
   //     .then((res) => res.json())
   //     .then((data) => setAvailableCourses(data))
   //     .catch((err) => console.error("Error fetching available courses:", err));
 
-  //   fetch("http://localhost:8080/api/available-trainers")
+  //   fetch("https://onecredit-backend.onrender.com/api/available-trainers")
   //     .then((res) => res.json())
   //     .then((data) => setAvailableTrainers(data))
   //     .catch((err) => console.error("Error fetching available trainers:", err));
@@ -96,7 +96,7 @@ const AdminDashboard = () => {
   const handleAddCourse = async (courseData) => {
     console.log("Course data being sent:", courseData); // Debugging
     try {
-      const response = await fetch("http://localhost:8080/api/add-course", {
+      const response = await fetch("https://onecredit-backend.onrender.com/api/add-course", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(courseData),
@@ -118,7 +118,7 @@ const AdminDashboard = () => {
 
 
   const handleAddTrainer = (trainer) => {
-    fetch("http://localhost:8080/api/trainers", {
+    fetch("https://onecredit-backend.onrender.com/api/trainers", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(trainer),
@@ -131,7 +131,7 @@ const AdminDashboard = () => {
  
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/users/student-count")
+    fetch("https://onecredit-backend.onrender.com/api/users/student-count")
       .then((res) => res.json())
       .then((data) => {
         console.log("Student Count:", data.studentsCount);
@@ -143,7 +143,7 @@ const AdminDashboard = () => {
 
   // Fetch the HODs data
   useEffect(() => {
-    fetch("http://localhost:8080/api/hods")
+    fetch("https://onecredit-backend.onrender.com/api/hods")
       .then((res) => res.json())
       .then((data) => {
         console.log("HODs API Response:", data);

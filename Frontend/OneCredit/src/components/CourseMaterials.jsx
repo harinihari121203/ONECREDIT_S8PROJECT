@@ -6,7 +6,7 @@ const CourseMaterials = ({ studentEmail }) => {
   
     useEffect(() => {
       if (studentEmail) {
-        fetch(`http://localhost:8080/api/student-courses?email=${studentEmail}`)
+        fetch(`https://onecredit-backend.onrender.com/api/student-courses?email=${studentEmail}`)
           .then((response) => response.json())
           .then((data) => setStudentCourses(data))
           .catch((error) =>

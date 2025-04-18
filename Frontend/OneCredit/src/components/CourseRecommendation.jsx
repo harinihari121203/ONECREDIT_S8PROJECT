@@ -13,7 +13,7 @@ const CourseRecommendation = () => {
       return;
     }
     try {
-      const response = await fetch(`http://localhost:8080/api/recommend-courses?field=${selectedField}`);
+      const response = await fetch(`https://onecredit-backend.onrender.com/api/recommend-courses?field=${selectedField}`);
       const data = await response.json();
       setRecommendedCourses(data);
     } catch (error) {

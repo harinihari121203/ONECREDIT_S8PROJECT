@@ -62,7 +62,7 @@ const ElectiveExemption = ({ totalCredits, settotalcredits }) => {
 
     const fetchExemptiveLimits = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/exemptiveLimits");
+        const response = await fetch("https://onecredit-backend.onrender.com/api/exemptiveLimits");
 
         if (!response.ok) {
           throw new Error("Failed to fetch exemptiveLimits");
@@ -96,7 +96,7 @@ const ElectiveExemption = ({ totalCredits, settotalcredits }) => {
       if (!formData.studentId || !formData.exemptiveType) return;  // Wait until both are ready
 
       try {
-        const response = await fetch(`http://localhost:8080/api/studentExemptionsCount/${formData.studentId}/${formData.exemptiveType}`);
+        const response = await fetch(`https://onecredit-backend.onrender.com/api/studentExemptionsCount/${formData.studentId}/${formData.exemptiveType}`);
         if (!response.ok) {
           throw new Error("Failed to fetch student exemption count");
         }
@@ -123,7 +123,7 @@ const ElectiveExemption = ({ totalCredits, settotalcredits }) => {
   useEffect(() => {
     const fetchExemptions = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/exemptions");
+        const response = await fetch("https://onecredit-backend.onrender.com/api/exemptions");
 
         if (!response.ok) {
           throw new Error("Failed to fetch exemptions");
@@ -146,7 +146,7 @@ const ElectiveExemption = ({ totalCredits, settotalcredits }) => {
   useEffect(() => {
     if (studentEmail) {
       // Fetch registered courses count
-      fetch(`http://localhost:8080/api/registered-courses?email=${studentEmail}`)
+      fetch(`https://onecredit-backend.onrender.com/api/registered-courses?email=${studentEmail}`)
         .then((response) => response.json())
         .then((data) => {
           if (data && data.length > 0) {
@@ -196,7 +196,7 @@ const ElectiveExemption = ({ totalCredits, settotalcredits }) => {
       try {
 
         const response = await axios.get(
-          `http://localhost:8080/attendance_marks?studentId=${studentId}&completed_status=Yes`
+          `https://onecredit-backend.onrender.com/attendance_marks?studentId=${studentId}&completed_status=Yes`
         );
         console.log("Data from API response", response?.data);
         setcompletedCourses(response?.data);
@@ -212,7 +212,7 @@ const ElectiveExemption = ({ totalCredits, settotalcredits }) => {
 
   useEffect(() => {
     const fetchAllCourses = async () => {
-      const response = await axios.get(`http://localhost:8080/api/courses`);
+      const response = await axios.get(`https://onecredit-backend.onrender.com/api/courses`);
       if (response?.data?.length > 0) {
         setcourses(response?.data)
       }
@@ -332,7 +332,7 @@ const ElectiveExemption = ({ totalCredits, settotalcredits }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/exemptions", {
+      const response = await fetch("https://onecredit-backend.onrender.com/api/exemptions", {
         method: "POST",
         body: requestData,
       });
@@ -363,7 +363,7 @@ const ElectiveExemption = ({ totalCredits, settotalcredits }) => {
     const interval = setInterval(async () => {
       for (const requestId of pendingOnlineCourseRequests) {
         try {
-          const res = await fetch(`http://localhost:8080/api/exemptions/${requestId}`);
+          const res = await fetch(`https://onecredit-backend.onrender.com/api/exemptions/${requestId}`);
           const data = await res.json();
 
           console.log(`⏳ Checking Status for ${requestId}:`, data);
@@ -436,7 +436,7 @@ const ElectiveExemption = ({ totalCredits, settotalcredits }) => {
   // Function to fetch exemptions
   const fetchExemptions = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/exemptions");
+      const response = await fetch("https://onecredit-backend.onrender.com/api/exemptions");
 
       if (!response.ok) {
         throw new Error("Failed to fetch exemptions");

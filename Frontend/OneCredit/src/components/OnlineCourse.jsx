@@ -76,7 +76,7 @@ const OnlineCourseDashboard = ({ totalCredits, settotalcredits }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/exemptions", {
+      const response = await fetch("https://onecredit-backend.onrender.com/api/exemptions", {
         method: "POST",
         body: requestData,
       });
@@ -117,7 +117,7 @@ const OnlineCourseDashboard = ({ totalCredits, settotalcredits }) => {
     const interval = setInterval(async () => {
       for (const requestId of pendingRequests) {
         try {
-          const res = await fetch(`http://localhost:8080/api/exemptions/${requestId}`);
+          const res = await fetch(`https://onecredit-backend.onrender.com/api/exemptions/${requestId}`);
           const data = await res.json();
 
           if (data.status === "Approved by COE") {
@@ -137,7 +137,7 @@ const OnlineCourseDashboard = ({ totalCredits, settotalcredits }) => {
 
   useEffect(() => {
     if (studentEmail) {
-      fetch(`http://localhost:8080/api/registered-courses?email=${studentEmail}`)
+      fetch(`https://onecredit-backend.onrender.com/api/registered-courses?email=${studentEmail}`)
         .then((response) => response.json())
         .then((data) => {
           if (data && data.length > 0) {

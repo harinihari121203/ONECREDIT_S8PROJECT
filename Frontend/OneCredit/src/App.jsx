@@ -33,7 +33,7 @@ const Home = () => {
       //   navigate("/hod-dashboard"); // Redirecting to ExemptionDashboard
       //   return;
       // }  
-      const response = await fetch("http://localhost:8080/api/protected", {
+      const response = await fetch("https://onecredit-backend.onrender.com/api/protected", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -12,7 +12,7 @@ const CompletedCourses = ({ studentId }) => {
     const fetchCompletedCourses = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/attendance_marks?studentId=${studentId}&completed_status=Yes`
+          `https://onecredit-backend.onrender.com/attendance_marks?studentId=${studentId}&completed_status=Yes`
         );
         console.log("Completed Courses Response:", response.data);
         setCompletedCourses(response.data || []);
@@ -30,7 +30,7 @@ const CompletedCourses = ({ studentId }) => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/courses`);
+        const response = await axios.get(`https://onecredit-backend.onrender.com/api/courses`);
         console.log("Available Courses Response:", response.data);
         setAvailableCourses(response.data || []);
       } catch (error) {
