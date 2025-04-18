@@ -19,7 +19,6 @@ const NewCourseSchema = new mongoose.Schema({
   }, // new attribute for course categorization
   description:{type:String,required:true},
   //eligible_departments: { type: [String], required: true },
-  credits: { type: Number, required: true },
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
   materials: { type: [MaterialSchema], default: [] }, // new field for materials
