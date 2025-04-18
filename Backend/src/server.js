@@ -27,7 +27,9 @@ const exemption = require("./routes/exemptionRequests");
 const HOD_Details = require('./models/hodSchema');
 const ExemptionRequest = require("./models/ExemptionRequest");
 const ExemptiveLimit=require("./models/exemptivetypelimit")
-
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerJSDocs = swaggerJsDoc(swaggerOptions);
 
 
 dotenv.config();
