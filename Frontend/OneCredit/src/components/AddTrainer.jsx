@@ -9,7 +9,7 @@ const AddTrainer = ({ onAddTrainer }) => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch("/api/courses");  // Update with your actual API endpoint
+        const response = await fetch("https://onecredit-backend.onrender.com/api/courses");  // Update with your actual API endpoint
         const data = await response.json();
         setCourses(data);  // Set fetched courses into state
       } catch (error) {
