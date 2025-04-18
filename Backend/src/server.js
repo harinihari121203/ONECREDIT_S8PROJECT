@@ -27,9 +27,7 @@ const exemption = require("./routes/exemptionRequests");
 const HOD_Details = require('./models/hodSchema');
 const ExemptionRequest = require("./models/ExemptionRequest");
 const ExemptiveLimit=require("./models/exemptivetypelimit")
-const swaggerUI = require("swagger-ui-express");
-const swaggerJsDoc = require("swagger-jsdoc");
-const swaggerJSDocs = swaggerJsDoc(swaggerOptions);
+
 
 
 dotenv.config();
@@ -42,7 +40,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors()); // Fix CORS issues
-app.use("/docs",swaggerUI.serve,swaggerUI.setup(swaggerJSDocs))
+
 app.use(express.urlencoded({ extended: true }));
 
 connectDB();
