@@ -1,136 +1,121 @@
-🎓 One Credit Course Registration and Exemption System
+ One Credit Course Registration and Exemption System
+ 
+A full-stack MERN web application to digitalize the entire workflow of One Credit Courses, enabling students, trainers, and admins to manage registrations, assessments, attendance, study materials, and exemption processes efficiently.
 
-This is our Final Year Project, developed as a full-stack web application using the MERN stack to digitalize the entire workflow of One Credit Courses.
-The system enables students, trainers, and admins to efficiently manage course registrations, assessment processes, attendance tracking, material uploads, and exemption applications in a structured and automated environment.
+---
 
-🚀 Live Demo
+## 🚀 Live Demo
 
-🔗 Visit the Deployed App (Frontend on Render)
-https://onecredit-s8project.onrender.com/
+- Frontend (Render): https://onecredit-s8project.onrender.com/
+- Backend (Render): https://onecredit-backend.onrender.com
+- GitHub Repository: https://github.com/harinihari121203/ONECREDIT_S8PROJECT
 
-🔗 Backend Deployment (Render)
-https://onecredit-backend.onrender.com
+---
 
-🔗 GitHub Repository
-https://github.com/harinihari121203/ONECREDIT_S8PROJECT
+## 🧰 Tech Stack
 
-🛠️ Tech Stack
-Frontend
+- Frontend: React.js, Tailwind CSS
+- Backend: Node.js, Express.js (REST API)
+- Auth: Firebase Authentication
+- Database: MongoDB Atlas
+- Deployment: Render (Frontend & Backend), MongoDB Atlas
 
-React.js
+---
 
-Tailwind CSS (for UI styling)
+## ✨ Features
 
-Firebase Authentication
+- Secure login with institutional BITSathy email (Firebase Auth)
+- Online course registration and eligibility tracking
+- Elective exemption requests:
+  - One Credit Courses
+  - Online Courses
+  - Honors / Minor Courses
+  - Internships
+- Smart course recommendation system:
+  - Popularity
+  - Department
+  - Interest
+  - Difficulty
+- Trainer dashboard for:
+  - Study material uploads
+  - Attendance marking (Day 1: FN1, AN1 | Day 2: FN2, AN2)
+  - Internal marks updating
+- Admin panel for:
+  - Course–trainer assignment
+  - Registration management
+  - Exemption review and approval
 
-Backend
+---
 
-Node.js
+## 👥 User Roles
 
-JavaScript
+### 🧑‍🎓 Student
 
-REST API (Express.js)
+- Register for one-credit courses
+- View enrolled courses and status
+- Apply for elective exemptions
+- Receive course recommendations
 
-Database
+### 👨‍🏫 Trainer
 
-MongoDB Atlas
+- View assigned courses
+- Upload study materials
+- View enrolled students
+- Mark attendance and update internal marks
 
-Deployment
+### 🧑‍💼 Admin
 
-Frontend: Render
+- Assign courses to trainers
+- Manage course registrations
+- Review and approve exemption requests
 
-Backend: Render
+---
 
-Database: MongoDB Atlas
+## 🖥️ Installation & Setup
 
-👥 User Roles and Features
-🧑‍🎓 Student
+### 1. Clone the Repository
 
-Login using BITSathy institutional email through Firebase Authentication
-
-Register for one-credit courses
-
-View enrolled courses and status
-
-Apply for elective exemption
-
-Receive course recommendations based on:
-
-Popularity
-
-Department
-
-Interest
-
-Difficulty
-
-👨‍🏫 Trainer
-
-View assigned courses
-
-Upload study materials
-
-View enrolled student lists
-
-Mark attendance (Day 1: FN1, AN1 | Day 2: FN2, AN2)
-
-Update internal marks
-
-🧑‍💼 Admin
-
-Assign courses to trainers
-
-View and manage course registrations
-
-Review and approve exemption requests
-
-📄 Key Features
-
-🔐 Secure Authentication using Firebase
-
-📝 Online Course Registration & Eligibility Tracking
-
-🧾 Elective Exemption Requests including:
-
-One Credit Course
-
-Online Course
-
-Honor / Minor Courses
-
-Internships
-
-🧠 Smart Course Recommendation System
-
-📚 Trainer Dashboard for study materials, attendance & marks
-
-📊 Admin Control Panel to review submissions & manage assignments
-
-🖥️ How to Run This Project Locally
-Clone the Repository
 git clone https://github.com/harinihari121203/ONECREDIT_S8PROJECT
 cd ONECREDIT_S8PROJECT
 
-Backend Setup
+text
+
+### 2. Backend Setup
+
 cd backend
 npm install
 npm start
 
-
 Backend runs on: http://localhost:5000
+text
 
-Frontend Setup
-cd frontend
+### 3. Frontend Setup
+
+cd ../frontend
 npm install
 npm run dev
 
-
 Frontend runs on: http://localhost:5173
+text
 
-Login Access
+---
 
-Authentication is restricted to official BITSathy Email IDs
+## 🔐 Authentication
 
-🙌 Acknowledgements
+- Authentication is restricted to official BITSathy email IDs via Firebase Authentication.
 
-Thanks to our project guide, faculty, and team members for their guidance and support throughout the development of this Final Year Engineering Project.
+---
+
+## 📂 Project Structure (High Level)
+
+ONECREDIT_S8PROJECT/
+frontend/ # React + Tailwind client
+backend/ # Node + Express API
+
+text
+
+---
+
+## 🙌 Acknowledgements
+
+Special thanks to our project guide, faculty, and team members for their guidance and support throughout the development of this final year engineering project.
